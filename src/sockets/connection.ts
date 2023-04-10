@@ -20,5 +20,12 @@ export function handleConnection(io: Server) {
       }
       await socket.leave(room);
     });
+
+    socket.on('login', async (token) => {
+      if (token === undefined) {
+        // TODO: check legitimacy of token
+        socket.disconnect();
+      }
+    });
   });
 }
