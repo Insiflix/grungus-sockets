@@ -1,0 +1,39 @@
+{
+  "name": "insiflix-sockets",
+  "version": "1.0.0",
+  "description": "Socket server for insiflix",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsc && node dist/index.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Insiflix/insiflix-sockets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Insiflix/insiflix-sockets/issues"
+  },
+  "homepage": "https://github.com/Insiflix/insiflix-sockets#readme",
+  "dependencies": {
+    "@types/socket.io": "^3.0.2",
+    "engine.io-parser": "^5.0.6",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "ws": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.3",
+    "@types/socket.io-parser": "^3.0.0",
+    "@types/ws": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^4.9.3"
+  }
+}
