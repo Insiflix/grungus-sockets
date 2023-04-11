@@ -1,6 +1,5 @@
 import { Server, Socket } from 'socket.io';
 import prisma from '../tools/prisma';
-import { resolve } from 'path';
 
 export function handleMessage(socket: Socket, io: Server) {
   // Send a message to a room
