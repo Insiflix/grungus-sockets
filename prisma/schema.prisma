@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Define the data model for users
+model User {
+  id          Int       @id @default(autoincrement())
+  identifier String? @unique @default(dbgenerated("(CAST(ROUND(RANDOM() * 1000000) AS INTEGER) || CAST(ROUND(RANDOM() * 1000000) AS INTEGER))"))
+  username    String    @unique
+  password    String
+  token       String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  messages    Message[] @relation("userMessages")
+  channels    Channel[] @relation("userChannels")
+}
+
+// Define the data model for channels
+model Channel {
+  id          Int       @id @default(autoincrement())
+  identifier String? @unique @default(dbgenerated("(CAST(ROUND(RANDOM() * 1000000) AS INTEGER) || CAST(ROUND(RANDOM() * 1000000) AS INTEGER))"))
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  messages    Message[] @relation("channelMessages")
+  users       User[]    @relation("userChannels")
+}
+
+// Define the data model for messages
+model Message {
+  id          Int       @id @default(autoincrement())
+  identifier String? @unique @default(dbgenerated("(CAST(ROUND(RANDOM() * 1000000) AS INTEGER) || CAST(ROUND(RANDOM() * 1000000) AS INTEGER))"))
+  text        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation("userMessages", fields: [userId], references: [id])
+  userId      Int
+  channel     Channel   @relation("channelMessages", fields: [channelId], references: [id])
+  channelId   Int
+}
+
