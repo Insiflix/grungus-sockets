@@ -1,4 +1,5 @@
 import { Server, Socket } from 'socket.io';
+import prisma from '../tools/prisma';
 
 export function handleMessage(io: Server) {
   io.on('connection', (socket: Socket) => {
