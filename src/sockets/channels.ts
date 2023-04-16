@@ -24,3 +24,21 @@ export function handleConnection(socket: Socket, io: Server) {
     await socket.leave(room);
   });
 }
+
+async function joinChannel(channelId: string, userId: number, socket: Socket) {
+  const channel = await prisma.channel.update({
+    where: { identifier: channelId },
+    data: {
+      users: {
+        connect: {
+          id: userId
+        }
+      }
+    }
+  });
+  socket.emit('channelJoin', {
+    channelId: channel.identifier,
+    channelName: channel.name,
+    channelDesc: channel.description
+  });
+}

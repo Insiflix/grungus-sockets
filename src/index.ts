@@ -1,5 +1,5 @@
 import { Server, Socket } from 'socket.io';
-import { handleConnection } from './sockets/connection';
+import { handleConnection } from './sockets/channels';
 import { handleMessage } from './sockets/message';
 import prisma from './tools/prisma';
 
