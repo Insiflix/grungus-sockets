@@ -25,9 +25,9 @@ export function handleConnection(socket: Socket, io: Server) {
   });
 }
 
-async function joinChannel(channelId: string, userId: number, socket: Socket) {
+async function joinChannel(channelId: string, userId: string, socket: Socket) {
   const channel = await prisma.channel.update({
-    where: { identifier: channelId },
+    where: { id: channelId },
     data: {
       users: {
         connect: {
@@ -37,7 +37,7 @@ async function joinChannel(channelId: string, userId: number, socket: Socket) {
     }
   });
   socket.emit('channelJoin', {
-    channelId: channel.identifier,
+    channelId: channel.id,
     channelName: channel.name,
     channelDesc: channel.description
   });

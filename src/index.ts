@@ -14,7 +14,6 @@ io.on('connection', async (socket: Socket) => {
   }
   socket.data.username = user.username;
   socket.data.id = user.id;
-  socket.data.identifier = user.identifier;
 
   handleConnection(socket, io);
   handleMessage(socket, io);
