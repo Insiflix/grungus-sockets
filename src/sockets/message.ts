@@ -5,7 +5,6 @@ import generateId from '../tools/helpers';
 export function handleMessage(socket: Socket, io: Server) {
   // Send a message to a room
   socket.on('message', async (data: { channel: string; content: any }) => {
-    console.log('message' + data.content + ' - ' + data.channel);
     const message = await prisma.message.create({
       data: {
         text: data.content,
