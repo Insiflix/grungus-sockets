@@ -1,6 +1,5 @@
 import { Server, Socket } from 'socket.io';
 import prisma from '../tools/prisma';
-import { User } from '@prisma/client';
 
 export function handleConnection(socket: Socket, io: Server) {
   // Join a room

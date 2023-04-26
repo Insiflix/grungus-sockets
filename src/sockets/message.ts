@@ -22,6 +22,5 @@ export function handleMessage(socket: Socket, io: Server) {
       createdAt: message.createdAt
     };
     io.to(data.channel.toString()).emit('message', outMessage);
-    console.log(socket.data);
   });
 }
