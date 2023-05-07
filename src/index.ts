@@ -4,7 +4,11 @@ import { handleMessage } from './sockets/message';
 import prisma from './tools/prisma';
 import { handleStatus } from './sockets/status';
 
-const io = new Server();
+const io = new Server({
+  cors: {
+    origin: 'http://localhost:5173'
+  }
+});
 io.on('connection', async (socket: Socket) => {
   const user = await prisma.user.findFirst({
     where: { token: socket.handshake.query.token?.toString() }
